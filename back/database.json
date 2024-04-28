@@ -1,0 +1,57 @@
+{
+    "user1": {
+      "symbols": [
+        "AMD",
+        "TSLA",
+        "HOOD",
+        "DIS",
+        "PEP",
+        "UBER"
+      ],
+      "quantity": [1, 2, 3, 4, 5, 6]
+    },
+    "user2": {
+      "symbols": [
+        "AMZN",
+        "SHAK",
+        "NFLX",
+        "AMD",
+        "MCD",
+        "CMG"
+      ],
+      "quantity": [2, 3, 4, 5, 6, 1]
+    },
+    "user3": {
+      "symbols": [
+        "DIS",
+        "SBUX",
+        "UBER",
+        "SQ",
+        "ADBE",
+        "PEP"
+      ],
+      "quantity": [3, 4, 5, 6, 1, 2]
+    },
+    "user4": {
+      "symbols": [
+        "JNJ",
+        "V",
+        "MA",
+        "BAC",
+        "WMT",
+        "NVAX"
+      ],
+      "quantity": [4, 5, 6, 1, 2, 3]
+    },
+    "user5": {
+      "symbols": [
+        "PG",
+        "KO",
+        "T",
+        "SBUX",
+        "NVDA",
+        "JACK"
+      ],
+      "quantity": [5, 6, 1, 2, 3, 4]
+    }
+  }

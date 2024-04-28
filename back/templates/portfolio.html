@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        body {
+            border: 1px solid #333;
+            padding: 10px;
+
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .button {
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .button:not(:last-child) {
+            margin-right: 0.5px;
+        }
+        h1 {
+            text-decoration: underline;
+        }
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Portfolio</h1>
+        <p class="bold">User ID: {{ user_id }}</p>
+        <p class="bold">Total Portfolio Value: ${{ total_stock_value|round(2) }}</p>
+        <table>
+            <tr>
+                <th>Stock Ticker -- Value</th>
+            </tr>
+            {% for holding in holdings %}
+            <tr>
+                <td>
+                    <div class="button">${{ holding.symbol }}</div>
+                </td>
+                <td>
+                    <div class="button">${{ holding.stock_value }}</div>
+                </td>
+            </tr>
+            {% endfor %}
+            <form id="add-stock-form">
+                <input type="text" id="stock-ticker" placeholder="Enter stock ticker" required>
+                <button type="submit">Add Stock</button>
+              </form>
+            <form id="add-stock-form">
+                <input type="text" id="stock-ticker" placeholder="Enter stock ticker" required>
+                <button type="submit">Remove Stock</button>
+              </form>
+              
+        </table>
+        <a href="http://localhost:3000/">Back</a>
+    </div>
+    <script>
+        function addStock() {
+          const symbol = prompt("Enter the stock symbol to add:");
+          if (symbol) {
+            fetch(`/portfolio/${{ user_id }}/stocks/${symbol}`, {
+              method: 'POST',
+            })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                location.reload();
+              } else {
+                alert('Error adding stock');
+              }
+            });
+          }
+        }
+      </script>
+</body>
+</html>
